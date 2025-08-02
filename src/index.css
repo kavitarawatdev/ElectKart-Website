@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@layer components{
+    .section{
+        @apply  w-full py-2 
+    }
+    .common-section{
+        @apply  my-5 py-10 px-5 bg-gray-50
+    }
+    .container{
+        @apply mx-auto w-7xl;
+    }
+    .heading-1{
+        @apply text-6xl
+    }
+    .heading-2{
+        @apply text-5xl
+    }
+    .heading-3{
+        @apply text-4xl
+    }
+    .heading-4{
+        @apply text-3xl
+    }
+    .heading-5{
+        @apply text-2xl font-medium
+    }
+    .heading-6{
+        @apply text-xl font-medium
+    }
+    .para-lg{
+        @apply text-lg
+    }
+    .para-md{
+        @apply text-base
+    }
+    .para-sm{
+        @apply text-sm
+    }
+    .icon-lg{
+        @apply text-6xl
+    }
+    .icon-md{
+        @apply text-4xl
+    }
+    .icon-sm{
+        @apply text-2xl
+    }
+    .caption{
+        @apply uppercase absolute top-3 right-4 bg-white rounded-xl px-4 py-1.5;
+    }
+    .common-heading{
+        @apply font-serif font-bold text-gray-800 text-5xl tracking-wide 
+    }
+    .common-para{
+        @apply text-gray-600 text-center font-medium text-lg tracking-wide mb-5 w-[70%]
+    }
+    /* ======= */
+    .common-btn{
+        @apply w-fit bg-green-500 text-white font-semibold px-8 py-3 rounded hover:bg-green-600 transition duration-200 tracking-wide text-xl;
+    }
+    /* ===== */
+    .flex-centered{
+        @apply flex items-center justify-center
+    }
+    .link, .btn{
+        @apply cursor-pointer
+    }
+    .option{
+        @apply cursor-pointer hover:bg-sky-300 p-2;
+    }
+    .select{
+        @apply cursor-pointer 
+    }
+    .highlight-para{
+        @apply text-green-500 font-semibold
+    }
+    .common-input-field{
+        @apply border-green-500 border-1 outline-0 px-3 w-full py-1.5 focus:outline-none focus:ring-1 focus:ring-green-500
+    }
+}

@@ -1,0 +1,10 @@
+.hero-right-section figure::after{
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
+    background-color: #3B82F6;
+    top: -2rem;
+    left: 30%;
+}
