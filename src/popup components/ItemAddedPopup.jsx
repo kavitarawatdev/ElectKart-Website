@@ -148,13 +148,7 @@ export const ItemAddedPopup = ({ quantity, colorChoice, indProduct, hidePopup, s
                         </button>
                     </NavLink>
                 </div>
-
-                {/* Quick Actions - Mobile Only */}
-                <div className="sm:hidden mt-4 text-center">
-                    <p className="para-xs text-gray-500">
-                        Swipe down or tap outside to close
-                    </p>
-                </div>
+                
             </div>
         </div>
     );
