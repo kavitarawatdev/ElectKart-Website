@@ -1,11 +1,15 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { BiShoppingBag } from "react-icons/bi";
 
-
 export const CartHeader = ({total_item}) => {
         const { loginWithRedirect} = useAuth0();
+    
         const handleUserLogin = () => {
-            loginWithRedirect()
+            loginWithRedirect({
+            authorizationParams: {
+                prompt: 'login'
+            }
+        });
         }
 
     return (
