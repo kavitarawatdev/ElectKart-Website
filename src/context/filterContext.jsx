@@ -44,9 +44,8 @@ export const FilterProvider = ({ children }) => {
 
     // update filter value
     const handleFilterUpdate = (e) => {
-        console.log(state.filter.color);
         const { name, value } = e.target;
-        console.log(`name: ${name}, value: ${value}`);
+        console.log(name, value)
         dispatch({
             type: "UPDATE_FILTER_VALUE",
             payload: { name, val: value }

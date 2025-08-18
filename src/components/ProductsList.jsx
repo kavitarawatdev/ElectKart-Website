@@ -1,5 +1,6 @@
 import { GridViewProducts } from "../components/GridViewProducts";
 import { ListViewProducts } from "../components/ListViewProducts";
+import { Loading } from "../helper/Loading";
 import { useFilterContext } from "../hooks/customHook";
 
 export const ProductsList = () => {
@@ -7,7 +8,7 @@ export const ProductsList = () => {
     
   
     if(isFilterLoading){
-        return <h1>Loading..........</h1>
+        return <Loading message={'Loading Your Filter Products...'}/>
     }else if (gridView){
         return <GridViewProducts filterProducts={filterProducts}/>
     }else{

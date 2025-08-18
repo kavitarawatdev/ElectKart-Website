@@ -1,56 +1,96 @@
-import { FaInstagram, FaTwitter, FaFacebookF, FaYoutube } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+import { navlinks } from '../data/header-data';
+import { useFilterContext } from '../hooks/customHook';
+import { socialMedia } from '../data/contact-card-data';
 
 export const Footer = () => {
-  return (
-    <footer className="section common-section bg-gray-900 text-white py-10 px-6">
-      <div className="container bg-gray-900 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
-        {/* Brand */}
-        <div>
-          <h2 className="text-2xl font-bold mb-4">ElecKart</h2>
-          <p className="text-gray-400">
-            Your trusted destination for smartphones, laptops, accessories and more.
-          </p>
-        </div>
+    const { allProducts, handleFilterUpdate } = useFilterContext()
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-          <ul className="space-y-2 text-gray-300 text-sm">
-            <li><a href="#" className="hover:text-white">Home</a></li>
-            <li><a href="#" className="hover:text-white">Shop</a></li>
-            <li><a href="#" className="hover:text-white">About Us</a></li>
-            <li><a href="#" className="hover:text-white">Contact</a></li>
-          </ul>
-        </div>
+    // to get the unique data
+    const getUniqueData = (feature) => {
+        const values = allProducts.map((product) => product[feature]);
+        return [...new Set(values)];
+    };
 
-        {/* Categories */}
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Categories</h3>
-          <ul className="space-y-2 text-gray-300 text-sm">
-            <li><a href="#" className="hover:text-white">Smartphones</a></li>
-            <li><a href="#" className="hover:text-white">Laptops</a></li>
-            <li><a href="#" className="hover:text-white">Accessories</a></li>
-            <li><a href="#" className="hover:text-white">Tablets</a></li>
-          </ul>
-        </div>
+    const uniqueCategory = getUniqueData("category");
+    return (
+        <footer className="section bg-gray-900 text-white py-10 px-6">
+            <div className="container grid grid-cols-2 md:grid-cols-4 gap-6">
 
-        {/* Social Media */}
-        <div>
-          <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
-          <div className="flex space-x-4 text-xl text-gray-300">
-            <a href="#"><FaInstagram className="hover:text-white" /></a>
-            <a href="#"><FaTwitter className="hover:text-white" /></a>
-            <a href="#"><FaFacebookF className="hover:text-white" /></a>
-            <a href="#"><FaYoutube className="hover:text-white" /></a>
-          </div>
-        </div>
-      </div>
+                {/* Brand */}
+                <div>
+                    <h2 className="text-2xl font-bold mb-4">ElecKart</h2>
+                    <p className="text-gray-400">
+                        Your trusted destination for smartphones, laptops, accessories and more.
+                    </p>
+                </div>
 
-      <div className="container  bg-gray-900 text-center text-gray-500 text-sm mt-10">
-        © 2025 ElecKart. All rights reserved.
-      </div>
-    </footer>
-  );
+                {/* Quick Links */}
+                <div>
+                    <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+                    <ul className="gap-2 text-gray-300 text-sm flex flex-col">
+                        {navlinks.map(data => {
+                            const { label, link} = data;
+                            return (
+                                <NavLink to={link} key={label}
+                                    className="para-sm capitalize text-gray-300 hover:text-white transition-colors duration-300"
+                                    aria-label={label}>
+                                    {label}
+                                </NavLink>
+                            )
+                        })
+                        }
+                    </ul>
+                </div>
+
+                {/* Categories */}
+                <div>
+                    <h3 className="text-lg font-semibold mb-3">Categories</h3>
+                    <ul className="gap-2 flex flex-col text-gray-300 text-sm">
+                        {uniqueCategory.map(ele => {
+                            return (
+                                <li key={ele} >
+                                    <NavLink to={"/products"} className="para-sm capitalize text-gray-300 hover:text-white transition-colors duration-300"
+                                    ><input type="button" className="capitalize"
+                                        value={ele} name="category" onClick={handleFilterUpdate} />
+                                    </NavLink>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+
+                {/* Social Media */}
+                <div>
+                    <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
+                    <ul className="gap-4 text-gray-300 text-sm flex flex-col md:flex-row">
+                        {socialMedia.map(data => {
+                            const { label, link, icon } = data;
+                            return (
+                                <li className='rounded-full p-2 bg-gray-300 w-fit  hover:bg-white hover:scale-110 transition-all duration-300'>
+                                <NavLink to={link} key={label}
+                                    className="icon-xs text-gray-800"
+                                    aria-label={label}>
+                                    {icon}
+                                </NavLink>
+                                </li>
+                            )
+                        })
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <div className="container text-center text-gray-500 text-base mt-10">
+                © 2025 ElecKart. Created with ❣️ by 
+                <NavLink to={"https://www.linkedin.com/in/kavitarawat11/"}
+                target='_blank'
+                rel='noopener noreferrer'
+                className=''> Kavita Rawat. </NavLink> 
+                All rights reserved.
+                
+            </div>
+        </footer>
+    );
 };
 

@@ -20,31 +20,42 @@ export const FilterSection = () => {
     const uniqueColor = getUniqueData("colors");
 
     return (
-        <div className='filters-container flex flex-col gap-10 w-[90%] py-4'>
-            {/* form */}
-            <div>
-                <form className="form"
+        <div className='filters-container flex flex-col gap-6 sm:gap-8 md:gap-10 w-full sm:w-[95%] lg:w-[90%] py-3 sm:py-4'>
+            
+            {/* Search Form */}
+            <div className="search-section">
+                <form className="form w-full"
                     onClick={(e) => e.preventDefault()}>
                     <input
-                        type="text" className='common-input-field para-sm'
-                        placeholder="Search for computer" aria-label="user-search"
-                        name="text" value={text} onChange={handleFilterUpdate}
+                        type="text" 
+                        className='common-input-field para-md w-full rounded'
+                        placeholder="Search for computer" 
+                        aria-label="user-search"
+                        name="text" 
+                        value={text} 
+                        onChange={handleFilterUpdate}
                     />
                 </form>
             </div>
 
-            {/* category selection */}
-            <div className="category-selection flex flex-col gap-5">
-                <h5 className='heading-5 font-bold'>Category</h5>
-                <ul className='flex flex-wrap gap-3'>
+            {/* Category Selection */}
+            <div className="category-selection flex flex-col gap-3 sm:gap-4 md:gap-5">
+                <h5 className='heading-5 font-bold text-gray-800'>Category</h5>
+                <ul className='flex flex-wrap gap-2 sm:gap-3'>
                     {uniqueCategory.map(ele => {
                         return (
-                            <li className="para-sm btn capitalize" key={ele}>
-                                <label htmlFor={ele} className='flex'>
-                                    <input type="checkbox" name="category" id={ele} className='w-8'
-                                        value={ele} checked={category.includes(ele)}
-                                        onChange={handleFilterUpdate} />
-                                    {ele}
+                            <li className="para-sm btn capitalize hover:bg-gray-50 transition-colors" key={ele}>
+                                <label htmlFor={ele} className='flex items-center gap-2 cursor-pointer select-none'>
+                                    <input 
+                                        type="checkbox" 
+                                        name="category" 
+                                        id={ele} 
+                                        className='w-4 h-4 sm:w-5 sm:h-5 accent-blue-500'
+                                        value={ele} 
+                                        checked={category.includes(ele)}
+                                        onChange={handleFilterUpdate} 
+                                    />
+                                    <span className="text-xs sm:text-sm md:text-base">{ele}</span>
                                 </label>
                             </li>
                         )
@@ -52,33 +63,46 @@ export const FilterSection = () => {
                 </ul>
             </div>
 
-            {/* price range */}
-            <div className="price-range-selection flex flex-col gap-5">
-                <h5 className='heading-5 font-bold'>Price Range</h5>
-                <div className="price-range flex gap-5 items-center">
-                    <span><FormatPrice price={minPrice}/></span> 
-                        - 
-                    <span><FormatPrice price={price}/></span>
+            {/* Price Range */}
+            <div className="price-range-selection flex flex-col gap-3 sm:gap-4 md:gap-5">
+                <h5 className='heading-5 font-bold text-gray-800'>Price Range</h5>
+                <div className="price-range flex flex-col sm:flex-row gap-2 sm:gap-5 items-start sm:items-center">
+                    <div className="price-display flex items-center gap-2 para-md font-medium">
+                        <span className="text-gray-600"><FormatPrice price={minPrice}/></span> 
+                        <span className="text-gray-400">-</span>
+                        <span className="text-blue-600 font-semibold"><FormatPrice price={price}/></span>
+                    </div>
                 </div>
-                <input type="range" min={minPrice} max={maxPrice} 
-                    step={500} name="price" value={price} 
-                    onChange={handleFilterUpdate} 
+                <input 
+                    type="range" 
+                    min={minPrice} 
+                    max={maxPrice} 
+                    step={500} 
+                    name="price" 
+                    value={price} 
+                    onChange={handleFilterUpdate}
+                    className="w-full h-2 bg-gray-200 rounded-lg cursor-pointer slider accent-blue-500"
                 />
             </div>
 
-            {/* comapny selection */}
-            <div className="comany-selection flex flex-col gap-5">
-                <h5 className="heading-5 font-bold">Company</h5>
-                <ul className="flex flex-wrap gap-5">
+            {/* Company Selection */}
+            <div className="company-selection flex flex-col gap-3 sm:gap-4 md:gap-5">
+                <h5 className="heading-5 font-bold text-gray-800">Company</h5>
+                <ul className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
                     {uniqueCompany.map((ele) => {
                         return (
-                            <li className="para-sm btn capitalize" key={ele}>
-                                <label htmlFor={ele} className='flex'>
-                                    <input type="checkbox" name="company" id={ele} className="w-8"
-                                    value={ele} checked={company.includes(ele)}
-                                    onChange={handleFilterUpdate}
-                                />
-                                    {ele}
+                            <li className="para-sm btn capitalize hover:bg-gray-50 transition-colors" key={ele}>
+                                <label htmlFor={`company-${ele}`} className='flex items-center gap-2 cursor-pointer select-none'>
+                                    <input 
+                                        type="checkbox" 
+                                        name="company" 
+                                        id={`company-${ele}`} 
+                                        className="w-4 h-4 sm:w-5 sm:h-5 accent-blue-500"
+                                        value={ele} 
+                                        checked={company.includes(ele)}
+                                        onChange={handleFilterUpdate}
+                                    />
+                                    <span className="text-xs sm:text-sm md:text-base">{ele}</span>
                                 </label>                     
                             </li>
                         )
@@ -86,31 +110,43 @@ export const FilterSection = () => {
                 </ul>
             </div>
 
-            {/*color section */}
-            <div className="color-selection flex flex-col gap-5">
-                <h5 className="heading-5 font-bold">Color</h5>
-                <div className="flex  flex-wrap gap-5">
+            {/* Color Selection */}
+            <div className="color-selection flex flex-col gap-3 sm:gap-4 md:gap-5">
+                <h5 className="heading-5 font-bold text-gray-800">Color</h5>
+                <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-5">
                     {uniqueColor.map((ele, i) => {
                         return (
-                            <button type="button" value={ele} key={i}
-                                className={`btn flex-centered rounded-full border-green-400 para-sm h-8 w-8 p-2 ${color === ele ? "border-3 scale-120" : "border-1"}`}
+                            <button 
+                                type="button" 
+                                value={ele} 
+                                key={i}
+                                className={`btn flex-centered rounded-full border-gray-300 para-sm 
+                                    h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 
+                                    hover:scale-110 transition-all duration-200 
+                                    ${color === ele ? "border-2 sm:border-3 scale-110 shadow-md" : "border-1 sm:border-2"}`}
                                 onClick={handleFilterUpdate} 
                                 style={{ backgroundColor: ele }}
-                                name="color"  >
-                                    {ele=== "all" ? "All" :ele==color ?<span className='text-green-400'>✓</span>:""}                    
+                                name="color"
+                                title={ele === "all" ? "All Colors" : ele}
+                            >
+                                {ele === "all" ? (
+                                    <span className="text-xs sm:text-sm font-bold text-gray-700">All</span>
+                                ) : ele === color ? (
+                                    <span className='text-white font-bold text-xs sm:text-sm'>✓</span>
+                                ) : ""}                    
                             </button>
-
                         )
-                    })
-                    }
+                    })}
                 </div>
-
             </div>
 
-            {/* clear all filters */}
-            <div className="clear-filters">
-                <button className='common-btn btn' onClick={handleClearFilters}>
-                    Clear Filters
+            {/* Clear Filters Button */}
+            <div className="clear-filters pt-2 sm:pt-3">
+                <button 
+                    className='common-btn btn w-full sm:w-auto bg-red-500 hover:bg-red-600' 
+                    onClick={handleClearFilters}
+                >
+                    Clear All Filters
                 </button>
             </div>
         </div>

@@ -1,10 +1,102 @@
-.hero-right-section figure::after{
+/* Responsive Hero Background Element */
+.hero-right-section figure::after {
     content: "";
     position: absolute;
-    width: 60%;
-    height: 100%;
-    z-index: 1;
     background-color: #3B82F6;
-    top: -2rem;
-    left: 30%;
+    z-index: 1;
+    
+    /* Mobile First Responsive Positioning */
+    width: 50%;
+    height: 80%;
+    top: -1rem;
+    left: 25%;
+    
+    /* Small screens (640px+) */
+    @media (min-width: 640px) {
+        width: 55%;
+        height: 85%;
+        top: -1.5rem;
+        left: 27%;
+    }
+    
+    /* Medium screens (768px+) */
+    @media (min-width: 768px) {
+        width: 60%;
+        height: 90%;
+        top: -1.75rem;
+        left: 28%;
+    }
+    
+    /* Large screens (1024px+) */
+    @media (min-width: 1024px) {
+        width: 60%;
+        height: 100%;
+        top: -2rem;
+        left: 30%;
+    }
+    
+    /* Extra large screens (1280px+) */
+    @media (min-width: 1280px) {
+        width: 65%;
+        height: 105%;
+        top: -2.5rem;
+        left: 32%;
+    }
+    
+    /* 2XL screens (1536px+) */
+    @media (min-width: 1536px) {
+        width: 70%;
+        height: 110%;
+        top: -3rem;
+        left: 35%;
+    }
+}
+
+/* Enhanced Loading Bar Animation */
+@keyframes loadingBarAnim {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 0.9;
+    }
+}
+
+.animate-loadingBar {
+    animation: loadingBarAnim 3s ease-out forwards;
+    
+    @media (max-width: 640px) {
+        animation-duration: 2.5s;
+    }
+    
+    @media (min-width: 1280px) {
+        animation-duration: 3.5s;
+    }
+}
+
+
+.hero-right-section figure {
+    animation: fadeInScale 1s ease-out;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.hero-right-section figure img {
+    position: relative;
+    z-index: 10;
 }

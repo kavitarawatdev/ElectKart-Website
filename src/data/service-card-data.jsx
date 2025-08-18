@@ -2,7 +2,7 @@ import { FaStar, FaTruck  } from "react-icons/fa";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { TbShieldCheckFilled } from "react-icons/tb";
 
-export const servicesData = [
+export const service_card_data = [
   {
     icon: <TbShieldCheckFilled className="text-green-600" />,
     title: "100% Genuine Products",

@@ -81,13 +81,17 @@ export const filterReducer = (state, action) => {
 
         // ==================================
         case "UPDATE_FILTER_PRODUCTS": {
-            const { text, category, company, color, price, minPrice, maxPrice } = state.filter;
+            const { text, category, company, color, price, maxPrice } = state.filter;
             let tempFilteredProduct = [...state.allProducts];
 
             // text
             if (text.trim() !== "") {
+                const userInput=text.toLowerCase()
                 tempFilteredProduct = tempFilteredProduct.filter((product) =>
-                    product.name.toLowerCase().includes(text.toLowerCase())
+                    product.name.toLowerCase().includes(userInput)||
+                    product.category.toLowerCase().includes(userInput) ||
+                    product.company.toLowerCase().includes(userInput)
+ 
                 );
             }
 

@@ -1,9 +1,9 @@
 export const cartReducer = (state, action) => {
     switch (action.type) {
         case 'TOTAL_CART_ITEMS': {
-                const totalItems = state.cart.reduce((accum, currVal)=>{
-                    let {quantity}=currVal
-                    accum+=quantity
+                const totalItems = state.cart?.reduce((accum, currVal)=>{
+                    if (!currVal || typeof currVal.quantity !== 'number') return accum;
+                    accum+=currVal.quantity
                     return accum;
                 },0)
                 return{
@@ -12,10 +12,43 @@ export const cartReducer = (state, action) => {
                 }
         }
 
+        case 'SET_CODE':{
+            return{
+                ...state,
+                applied_code:action.payload
+            }
+        }
+
+        case 'REMOVE_CODE':{
+            return{
+                ...state,
+                applied_code:"",
+                promo_discount:0
+            }
+        }
+        case 'TOTAL_DISCOUNT_PRICE': {
+            let discount=0
+            switch (state.applied_code) {
+                case 'SAVE20':
+                    discount=state.total_amount*0.2
+                    break;
+                case 'WELCOME':
+                    discount=800
+                    break;   
+                default:
+                    discount=0
+                    break;
+            }
+            return{
+                ...state,
+                promo_discount:discount
+            }
+        }
+
         case 'TOTAL_CART_PRICE':{
-            const totalPrice=state.cart.reduce((accum, currItem)=>{
-                const {price, quantity}=currItem
-                accum+=price*quantity
+            const totalPrice=state.cart?.reduce((accum, currItem)=>{
+                if (!currItem || typeof currItem.quantity !== 'number'||typeof currItem.price !== 'number') return accum;
+                accum+=currItem.price*currItem.quantity
                 return accum
             }, 0)
 

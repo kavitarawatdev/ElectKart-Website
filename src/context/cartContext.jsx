@@ -23,11 +23,17 @@ const initialState = {
     cart: getLSCartData(),
     total_item: "",
     total_amount: "",
-    shipping_fee: 500,
+    applied_code:"",
+    promo_discount:"",
 }
 
 export const CartProvider = ({ children }) => {
+    
     const [state, dispatch] = useReducer(cartReducer, initialState);
+
+    const setPromoCode=(value)=>{
+        dispatch({type:'SET_CODE', payload:value})
+    } 
 
     const handleAddToCart = (colorChoice, quantity, _id, indProduct) => {
         dispatch({ type: 'ADD_TO_CART', payload: { colorChoice, quantity, _id, indProduct } });
@@ -48,16 +54,27 @@ export const CartProvider = ({ children }) => {
         dispatch({type:"DECREASE_QUANTITY", payload:id})
     }
 
+    const handlePromoCodeSubmit=(applied_code)=>{
+         dispatch({type:"TOTAL_DISCOUNT_PRICE", payload: applied_code})
+    }
+
+    const handleRemoveCode=()=>{
+        dispatch({type:"REMOVE_CODE"})
+    }
+
     useEffect(() => {
         dispatch({type:"TOTAL_CART_ITEMS"})
+        dispatch({type:"TOTAL_DISCOUNT_PRICE"})
         dispatch({type:'TOTAL_CART_PRICE'})
         localStorage.setItem("user-Elec-Cart", JSON.stringify(state.cart));
     }, [state.cart])
 
     return (
-        <CartContext.Provider value={{ ...state, handleAddToCart, handleRemoveFromCart, handleClearCart, handleIncrement, handleDecrement }}>
+        <CartContext.Provider value={{ ...state, handleAddToCart,handleRemoveCode, handleRemoveFromCart, handleClearCart, handleIncrement, handleDecrement, setPromoCode, handlePromoCodeSubmit }}>
             {children}
         </CartContext.Provider>
     )
 }
+
 export default CartContext;
+// localStorage.removeItem("user-Elec-Cart")

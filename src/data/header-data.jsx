@@ -18,15 +18,3 @@ export const navlinks=[
     },
 ]
 
-export const headerBtns  = [
-    {
-        label:"cart-trolley",
-        link:"/cart",
-        icon:<BsCart3/>
-    },
-    {
-        label:"search-btn",
-        link:"/search",
-        icon:<BsSearch/>
-    },
-]
