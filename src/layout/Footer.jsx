@@ -67,8 +67,9 @@ export const Footer = () => {
                         {socialMedia.map(data => {
                             const { label, link, icon } = data;
                             return (
-                                <li className='rounded-full p-2 bg-gray-300 w-fit  hover:bg-white hover:scale-110 transition-all duration-300'>
-                                <NavLink to={link} key={label}
+                                <li key={label}
+                                className='rounded-full p-2 bg-gray-300 w-fit  hover:bg-white hover:scale-110 transition-all duration-300'>
+                                <NavLink to={link}
                                     className="icon-xs text-gray-800"
                                     aria-label={label}>
                                     {icon}
