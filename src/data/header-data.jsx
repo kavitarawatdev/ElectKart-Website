@@ -5,7 +5,7 @@ export const navlinks=[
         link:"/",
     },
     {
-        label:"About",
+        label:"Abou",
         link:"/about",
     },
     {
