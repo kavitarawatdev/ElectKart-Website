@@ -37,7 +37,7 @@ export const UserNavLogin = () => {
 
                 <div className={`absolute top-9 w-full bg-gray-600 items-center justify-center ${dropdown ? `flex flex-col gap-2` : `hidden`}`}>
                     <button onClick={handleUserLogout} className="common-btn">
-                        Log out
+                        Logout
                     </button>
                 </div>
             </div>
