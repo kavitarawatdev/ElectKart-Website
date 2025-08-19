@@ -5,9 +5,15 @@ import { useNavigate } from "react-router-dom";
 export const NavSearch = ({isMobileMenuOpen, setIsMobileMenuOpen}) => {
     const { filter: { text, },  handleFilterUpdate} = useFilterContext()
     const navigate = useNavigate()
+     const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
     const handleFormSubmit=(e)=>{
         e.preventDefault(); // Prevent default page reload
-        isMobileMenuOpen? setIsMobileMenuOpen(false):null
+        if(isMobileMenuOpen) {
+            scrollToTop()
+            setIsMobileMenuOpen(false)
+        }
         navigate("/products"); // Redirect to product page
     }
     

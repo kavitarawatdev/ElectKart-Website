@@ -3,7 +3,10 @@ import { useFilterContext } from "../hooks/customHook";
 
 export const FilterSection = () => {
     const { filter: { text, category, company, color, price, minPrice, maxPrice }, allProducts, handleFilterUpdate, handleClearFilters } = useFilterContext()
-
+    const handleFormSubmit = (e) => {
+        e.preventDefault(); // Prevent default page reload
+        handleFilterUpdate(e);
+    }
     // to get the unique data
     const getUniqueData = (feature) => {
         if (feature === "colors") {
@@ -25,7 +28,7 @@ export const FilterSection = () => {
             {/* Search Form */}
             <div className="search-section">
                 <form className="form w-full"
-                    onClick={(e) => e.preventDefault()}>
+                    onSubmit={(e) => handleFormSubmit(e)}>
                     <input
                         type="text" 
                         className='common-input-field para-md w-full rounded'
