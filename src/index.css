@@ -10,10 +10,10 @@
         @apply w-full py-2 sm:py-3 md:py-4
     }
     .common-section{
-        @apply my-3 sm:my-4 sm:py-8 md:my-5 py-6 md:py-10 px-2 md:px-6 lg:px-8 xl:px-12 2xl:px-16
+        @apply my-3 sm:my-4 sm:py-8 md:my-5 py-6 md:py-10 px-0 md:px-6 lg:px-8 xl:px-12 2xl:px-16
     }
     .container{
-        @apply mx-auto w-full px-2 md:px-6 md:w-full lg:w-5xl xl:w-6xl 2xl:w-7xl;
+        @apply mx-auto w-full px-1.5 sm:px-2 md:px-6 md:w-full lg:w-5xl xl:w-6xl 2xl:w-7xl;
     }
     
     /* Typography - Mobile First Approach */

@@ -5,6 +5,15 @@ import { socialMedia } from '../data/contact-card-data';
 
 export const Footer = () => {
     const { allProducts, handleFilterUpdate } = useFilterContext()
+     const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const handleLinkClick=(e)=>{
+        scrollToTop()
+        handleFilterUpdate(e)
+            
+    }
 
     // to get the unique data
     const getUniqueData = (feature) => {
@@ -50,9 +59,11 @@ export const Footer = () => {
                         {uniqueCategory.map(ele => {
                             return (
                                 <li key={ele} >
-                                    <NavLink to={"/products"} className="para-sm capitalize text-gray-300 hover:text-white transition-colors duration-300"
+                                    <NavLink to={"/products"}
+                                     onClick={(e)=>handleLinkClick(e)}
+                                     className="para-sm capitalize text-gray-300 hover:text-white transition-colors duration-300"
                                     ><input type="button" className="capitalize"
-                                        value={ele} name="category" onClick={handleFilterUpdate} />
+                                        value={ele} name="category" />
                                     </NavLink>
                                 </li>
                             )

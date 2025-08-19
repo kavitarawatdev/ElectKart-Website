@@ -3,9 +3,13 @@ import { navlinks, } from "../data/header-data";
 
 
 export const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     const handleLinkClick=()=>{
         if(isMobileMenuOpen) {
+            scrollToTop()
             setIsMobileMenuOpen(false)
         }
     }
