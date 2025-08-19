@@ -7,11 +7,12 @@ import { IndProduct } from './pages/IndProduct';
 import { Contact } from './pages/Contact';
 import { Cart } from './pages/Cart';
 import { Products } from './pages/Products';
+import { ErrorPage } from './pages/Error';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Applayout />,
-    errorElemet:<Error/>,
+    errorElement:<ErrorPage/>,
     children: [
       {
         path:'/',
