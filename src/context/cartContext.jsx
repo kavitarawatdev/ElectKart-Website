@@ -10,8 +10,10 @@ const getLSCartData = () => {
         if (!cartData || cartData === undefined ) {
             return [ ];
         }
-        // console.log("cartData", cartData);
-        const parsedCart = JSON.parse(cartData);
+        const filteredArray = cartData.filter(item => item !== null);
+        console.log("cartData", cartData);
+        const parsedCart = JSON.parse(filteredArray);
+        console.log("filteredArray", filteredArray);
         return Array.isArray(parsedCart) ? parsedCart : [];
     } catch (error) {
         console.log(error);

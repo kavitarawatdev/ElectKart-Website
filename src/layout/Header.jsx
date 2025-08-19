@@ -64,6 +64,7 @@ export const Header = () => {
                                 to='/cart'
                                 className='icon-sm xl:icon-md hover:text-yellow-400 transition-colors duration-200 p-2 relative'
                                 aria-label={`Shopping cart with ${total_item} items`}
+                                onClick={()=>setIsMobileMenuOpen(false)}
                             >
                                 {total_item > 0 && (
                                     <span className='absolute text-blue-950 font-extrabold w-4 h-4 sm:w-5 sm:h-5 flex-centered bg-yellow-500 rounded-full -top-1 -right-1 sm:-top-2 sm:-right-2 text-[10px] sm:text-xs'>

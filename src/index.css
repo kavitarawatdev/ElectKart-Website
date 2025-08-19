@@ -67,7 +67,7 @@
     
     /* Common Heading & Paragraph */
     .common-heading{
-        @apply font-serif font-bold text-gray-800 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl tracking-wide text-center sm:text-left
+        @apply font-serif font-bold text-gray-800 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl tracking-wide text-center
     }
     .common-para{
         @apply text-gray-600 text-center font-medium text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg 2xl:text-xl tracking-wide mb-3 sm:mb-4 md:mb-5 w-full sm:w-[85%] md:w-[75%] lg:w-[70%]

@@ -10,6 +10,14 @@ import { TimerBar } from "../helper/TimerBar";
 
 export const ItemAddedPopup = ({ quantity, colorChoice, indProduct, hidePopup, setHidePopup }) => {
     const { total_item, total_amount } = useCartContext();
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const handleLinkClick=()=>{
+        scrollToTop()
+        setHidePopup(!hidePopup)
+    }
 
 
     useEffect(() => {
@@ -122,22 +130,19 @@ export const ItemAddedPopup = ({ quantity, colorChoice, indProduct, hidePopup, s
                     {/* Continue Shopping */}
                     <NavLink 
                         to={'/products'}
-                        className="flex-1"
-                        onClick={() => setHidePopup(!hidePopup)}
-                    >
-                        <button className='common-btn w-full flex-centered gap-2 
+                        className="flex-1 common-btn w-full flex-centered gap-2 
                                          bg-gray-500 hover:bg-gray-600 
-                                         transition-all duration-200 transform hover:scale-105'>
+                                         transition-all duration-200 transform hover:scale-105"
+                        onClick={handleLinkClick}>
                             <TiArrowBack className='icon-xs' />
                             <span className="para-sm sm:para-md">Continue Shopping</span>
-                        </button>
                     </NavLink>
 
                     {/* Go to Cart */}
                     <NavLink 
                         to={'/cart'} 
                         className='flex-1'
-                        onClick={() => setHidePopup(!hidePopup)}
+                        onClick={handleLinkClick}
                     >
                         <button className='common-btn w-full 
                                          bg-gradient-to-r from-blue-600 to-indigo-600 
