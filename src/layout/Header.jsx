@@ -67,7 +67,7 @@ export const Header = () => {
                                 onClick={()=>setIsMobileMenuOpen(false)}
                             >
                                 {total_item > 0 && (
-                                    <span className='absolute text-blue-950 font-extrabold w-4 h-4 sm:w-5 sm:h-5 flex-centered bg-yellow-500 rounded-full -top-1 -right-1 sm:-top-2 sm:-right-2 text-[10px] sm:text-xs'>
+                                    <span className='absolute text-blue-950 font-extrabold w-5 h-5 sm:w-6 sm:h-6 flex-centered bg-yellow-500 rounded-full -top-1 -right-1 sm:-top-2 sm:-right-2 text-[10px] sm:text-xs'>
                                         {total_item > 10 ? '10+' : total_item}
                                     </span>
                                 )}

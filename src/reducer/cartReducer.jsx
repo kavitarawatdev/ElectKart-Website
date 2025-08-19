@@ -61,8 +61,9 @@ export const cartReducer = (state, action) => {
         case 'ADD_TO_CART': {
             const { colorChoice, quantity, _id, indProduct } = action.payload;
             let cartProduct;
+            let productId= _id + colorChoice;
             cartProduct = {
-                id: _id + colorChoice,
+                id: productId,
                 name: indProduct.name,
                 img: indProduct.img,
                 price: indProduct.price,
@@ -72,29 +73,24 @@ export const cartReducer = (state, action) => {
             }
 
             // Check if the product already exists in the cart
-            const existingProductIndex = state.cart?.find(item => item.id === _id + colorChoice);
-            if (existingProductIndex) {
+            const existingProduct = state.cart?.find(item => item.id === _id + colorChoice);
+            if (existingProduct) {
                 // If it exists, update the quantity
                 let updatedCart = state.cart.map(item => {
-                    if (item.id === _id + colorChoice) {
+                    if (item.id === productId) {
                         // Ensure the new quantity does not exceed stock
-                        if (item.quantity + quantity > item.stock) {
-                            return {
-                                ...item,
-                                quantity: item.stock // Set to stock limit if exceeded
-                            };
-                        }
-                        let newQuantity = item.quantity + quantity;
+                        const newQty=Math.min(item.quantity + quantity, item.stock);         
                         return {
                            ...item,
-                           quantity: newQuantity
+                           quantity: newQty
                         }
                     }
+                    return item;
                 });
 
                 return{
                     ...state,
-                    cart: updatedCart, // Filter out any undefined items
+                    cart: updatedCart,
                 }
             } else {
                 // If it doesn't exist, add the new product to the cart
@@ -115,21 +111,17 @@ export const cartReducer = (state, action) => {
         }
 
         case 'INCREASE_QUANTITY':{
+            console.log("handle increment");
+            console.log(action.payload);
              let updatedCart = state.cart.map(item => {
                     if (item.id === action.payload) {
-                        // Ensure the new quantity does not exceed stock
-                        if (item.quantity  === item.stock) {
-                            return {
-                                ...item,
-                                quantity: item.stock // Set to stock limit if exceeded
-                            };
-                        }
-                        let newQuantity = item.quantity + 1;
+                        const newQuantity = Math.min(item.quantity + 1, item.stock);          
                         return {
                            ...item,
                            quantity: newQuantity
                         }
                     }
+                    return item;
                 });
 
             return{
@@ -140,20 +132,15 @@ export const cartReducer = (state, action) => {
         }
            
         case 'DECREASE_QUANTITY':{
-             let updatedCart = state.cart.map(item => {
+             let updatedCart = state.cart?.map(item => {
                     if (item.id === action.payload) {
-                        if (item.quantity <=1) {
-                            return {
-                                ...item,
-                                quantity: 1 // Set to stock limit if exceeded
-                            };
-                        }
-                        let newQuantity = item.quantity - 1;
+                         const newQuantity = Math.max(item.quantity - 1, 1);
                         return {
                            ...item,
                            quantity: newQuantity
                         }
                     }
+                    return item;
                 });
 
             return{

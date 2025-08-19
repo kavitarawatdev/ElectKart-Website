@@ -25,7 +25,7 @@ export const AddToCart = ({ indProduct }) => {
 
     const handleShowPopup = () => {
         handleAddToCart(colorChoice, quantity, _id, indProduct)
-        setHidePopup(() => !hidePopup)
+        setHidePopup(false)
     }
 
     return (
