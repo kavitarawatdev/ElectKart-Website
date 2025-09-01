@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { navlinks, } from "../data/header-data";
+import { useCartContext } from "../hooks/customHook";
 
 
 export const Navbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    const {scrollToTop}= useCartContext()
+
 
     const handleLinkClick=()=>{
-        if(isMobileMenuOpen) {
-            scrollToTop()
+        scrollToTop()
+        if(isMobileMenuOpen) {       
             setIsMobileMenuOpen(false)
         }
     }

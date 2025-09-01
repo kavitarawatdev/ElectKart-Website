@@ -19,6 +19,7 @@ export const CartItem = ({ id, name, img, price, quantity, color }) => {
                             <img 
                                 src={img} 
                                 alt={name} 
+                                loading="lazy"
                                 className="h-10 w-10 xs:h-12 xs:w-12 sm:h-12 sm:w-12 md:h-10 md:w-10 object-cover rounded-lg" 
                             />
                         </figure>

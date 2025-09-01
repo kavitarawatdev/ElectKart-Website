@@ -8,8 +8,14 @@ import { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 
 export const Header = () => {
-    const { total_item } = useCartContext();
+    const { total_item, scrollToTop} = useCartContext();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const handleBtnClick=()=>{
+        scrollToTop()
+        if(isMobileMenuOpen){
+            setIsMobileMenuOpen(false)
+        }
+    }
 
     return (
         <>
@@ -64,7 +70,7 @@ export const Header = () => {
                                 to='/cart'
                                 className='icon-sm xl:icon-md hover:text-yellow-400 transition-colors duration-200 p-2 relative'
                                 aria-label={`Shopping cart with ${total_item} items`}
-                                onClick={()=>setIsMobileMenuOpen(false)}
+                                onClick={handleBtnClick}
                             >
                                 {total_item > 0 && (
                                     <span className='absolute text-blue-950 font-extrabold w-5 h-5 sm:w-6 sm:h-6 flex-centered bg-yellow-500 rounded-full -top-1 -right-1 sm:-top-2 sm:-right-2 text-[10px] sm:text-xs'>

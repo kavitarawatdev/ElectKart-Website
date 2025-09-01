@@ -37,6 +37,7 @@ export const ProductImg = ({ images, name }) => {
                                         src={image} 
                                         alt={`${name} view ${idx + 1}`} 
                                         className='w-full h-full object-contain' 
+                                        loading="lazy"
                                     />
                                 </figure>
                             )
@@ -51,6 +52,7 @@ export const ProductImg = ({ images, name }) => {
                         <img 
                             src={images[imgIdx]} 
                             alt={`${name} - Main view`} 
+                            loading="lazy"
                             className='w-full h-full object-contain hover:scale-105 transition-transform duration-300' 
                         />
                     </figure>

@@ -24,6 +24,7 @@ export const ListViewProducts = ({ filterProducts }) => {
                                         alt={name}
                                         className='w-full sm:w-auto h-48 sm:h-52 md:h-56 lg:h-60 xl:h-64 
                                                   object-contain rounded-lg shadow-sm bg-gray-50' 
+                                        loading="lazy"
                                     />
                                     <figcaption className='common-caption para-sm sm:para-md'>
                                         {category}

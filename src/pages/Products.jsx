@@ -16,7 +16,7 @@ export const Products = () => {
                 <div className="grid xs:grid-cols-[0.3fr_1fr] xs:gap-4 sm:gap-6 lg:gap-8">
                     
                     {/* Filter Section - Full width on mobile, sidebar on desktop */}
-                    <section className='lg:border-r-2 border-gray-200 px-4 py-2 sm:px-5 md:px-6 lg:pr-8'>
+                    <section className=' lg:border-r-2 border-gray-200 px-4 py-2 sm:px-5 md:px-6 lg:pr-8'>
                         <FilterSection/>
                     </section>
 

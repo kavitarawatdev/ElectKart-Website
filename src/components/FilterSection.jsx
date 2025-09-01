@@ -1,7 +1,7 @@
 import { FormatPrice } from "../helper/FormatPrice";
 import { useFilterContext } from "../hooks/customHook";
 
-export const FilterSection = () => {
+export const FilterSection = () => {    
     const { filter: { text, category, company, color, price, minPrice, maxPrice }, allProducts, handleFilterUpdate, handleClearFilters } = useFilterContext()
     const handleFormSubmit = (e) => {
         e.preventDefault(); // Prevent default page reload
@@ -17,6 +17,10 @@ export const FilterSection = () => {
         const values = allProducts.map((product) => product[feature]);
         return ["all", ...new Set(values)];
     };
+
+    const handleUserInput=(e)=>{
+        handleFilterUpdate(e)
+    }
 
     const uniqueCategory = getUniqueData("category");
     const uniqueCompany = getUniqueData("company");
@@ -36,7 +40,7 @@ export const FilterSection = () => {
                         aria-label="user-search"
                         name="text" 
                         value={text} 
-                        onChange={handleFilterUpdate}
+                        onChange={handleUserInput}
                     />
                 </form>
             </div>

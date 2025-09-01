@@ -31,6 +31,7 @@ export const Hero = () => {
                             <img 
                                 src="https://res.cloudinary.com/dwwurx8fo/image/upload/v1752731602/Gemini_Generated_Image_rc79psrc79psrc79_q7zld1.png" 
                                 alt="hero image"  
+                                loading="lazy"
                                 className='w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl h-auto object-contain relative z-10 drop-shadow-lg' 
                             />
                         </figure>

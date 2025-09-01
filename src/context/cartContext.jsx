@@ -5,19 +5,15 @@ const CartContext = createContext();
 
 const getLSCartData = () => {
     try {
-        let cartData = localStorage.getItem("user-Elec-Cart");
-        console.log("cardt data", cartData)
-        
+        let cartData = localStorage.getItem("user-Elec-Cart");      
         if (!cartData || cartData === undefined ) {
             console.log(!cartData || cartData === undefined)
             return [ ];
         }
-        const filteredArray = cartData.filter(item => item !== null);
-        console.log("filtered array", filteredArray);
-        const parsedCart = JSON.parse(filteredArray);
-        console.log("parsedCart", parsedCart);
-        console.log("ise parsedcart arry",Array.isArray(parsedCart))
-        return parsedCart;
+        const parsedCart = JSON.parse(cartData);
+        const filteredArray = parsedCart.filter(item => item !== null);
+        return Array.isArray(filteredArray)?filteredArray:[ ]
+
     } catch (error) {
         console.log("cart error",error);
         return [];
@@ -35,6 +31,9 @@ const initialState = {
 export const CartProvider = ({ children }) => {
     
     const [state, dispatch] = useReducer(cartReducer, initialState);
+    const scrollToTop=()=>{
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
 
     const setPromoCode=(value)=>{
         dispatch({type:'SET_CODE', payload:value})
@@ -75,7 +74,7 @@ export const CartProvider = ({ children }) => {
     }, [state.cart])
 
     return (
-        <CartContext.Provider value={{ ...state, handleAddToCart,handleRemoveCode, handleRemoveFromCart, handleClearCart, handleIncrement, handleDecrement, setPromoCode, handlePromoCodeSubmit }}>
+        <CartContext.Provider value={{ ...state, handleAddToCart,handleRemoveCode, handleRemoveFromCart, handleClearCart, handleIncrement, handleDecrement, setPromoCode, scrollToTop }}>
             {children}
         </CartContext.Provider>
     )
