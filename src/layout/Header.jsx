@@ -20,8 +20,9 @@ export const Header = () => {
     return (
         <>
             {/* Main Header */}
-            <header className='section bg-blue-950 text-gray-200 h-16 sm:h-18 md:h-20 flex-centered sticky top-0 z-50'>
-                <div className="container bg-blue-950 flex items-center justify-between">
+            <header className='section grid bg-blue-950 text-gray-200 h-16 sm:h-18 md:h-20 sticky top-0 z-50'>
+                <div className=" bg-blue-950 flex items-center justify-between
+                    mx-auto w-full px-1.5 sm:px-2 md:px-6 md:w-full lg:w-5xl xl:min-w-7xl 2xl:min-w-[1536px] 2xl:max-w-[1600px]">
 
                     {/* Logo Section */}
                     <div className="logo flex-shrink-0">
