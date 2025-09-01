@@ -17,9 +17,9 @@ const getLSCartData = () => {
         const parsedCart = JSON.parse(filteredArray);
         console.log("parsedCart", parsedCart);
         console.log("ise parsedcart arry",Array.isArray(parsedCart))
-        return Array.isArray(parsedCart) ? parsedCart : [];
+        return parsedCart;
     } catch (error) {
-        console.log(error);
+        console.log("cart error",error);
         return [];
     }
 }
