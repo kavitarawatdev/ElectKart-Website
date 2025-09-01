@@ -6,14 +6,17 @@ const CartContext = createContext();
 const getLSCartData = () => {
     try {
         let cartData = localStorage.getItem("user-Elec-Cart");
+        console.log("cardt data", cartData)
         
         if (!cartData || cartData === undefined ) {
+            console.log(!cartData || cartData === undefined)
             return [ ];
         }
         const filteredArray = cartData.filter(item => item !== null);
-        console.log("cartData", cartData);
+        console.log("filtered array", filteredArray);
         const parsedCart = JSON.parse(filteredArray);
-        console.log("filteredArray", filteredArray);
+        console.log("parsedCart", parsedCart);
+        console.log("ise parsedcart arry",Array.isArray(parsedCart))
         return Array.isArray(parsedCart) ? parsedCart : [];
     } catch (error) {
         console.log(error);
