@@ -16,6 +16,8 @@ export const UserNavLogin = () => {
         // Page will refresh
     };
 
+    // const body=document.querySelector("body");
+    // body.addEventListener("onClick",setDropdown(false))
     const handleUserLogout = () => {
         logout({
             logoutParams: {
@@ -35,8 +37,8 @@ export const UserNavLogin = () => {
                     <span className=''>{user.given_name}</span>
                 </div>
 
-                <div className={`absolute top-9 w-full bg-gray-600 items-center justify-center ${dropdown ? `flex flex-col gap-2` : `hidden`}`}>
-                    <button onClick={handleUserLogout} className="common-btn">
+                <div className={`absolute logout-btn-container top-9 w-full bg-gray-600 items-center justify-center ${dropdown ? `flex flex-col gap-2` : `hidden`}`}>
+                    <button onClick={handleUserLogout} className="common-btn logout-btn">
                         Logout
                     </button>
                 </div>

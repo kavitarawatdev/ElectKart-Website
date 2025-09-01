@@ -1,18 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import { navlinks } from '../data/header-data';
-import { useFilterContext } from '../hooks/customHook';
+import { useCartContext, useFilterContext } from '../hooks/customHook';
 import { socialMedia } from '../data/contact-card-data';
 
 export const Footer = () => {
-    const { allProducts, handleFilterUpdate } = useFilterContext()
-     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    const { allProducts, handleFilterUpdate,  handleClearFilters } = useFilterContext()
+    const {scrollToTop} = useCartContext()
+
 
     const handleLinkClick=(e)=>{
         scrollToTop()
-        handleFilterUpdate(e)
-            
+        handleClearFilters()
+        handleFilterUpdate(e)           
     }
 
     // to get the unique data

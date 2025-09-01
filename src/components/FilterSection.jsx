@@ -2,7 +2,8 @@ import { FormatPrice } from "../helper/FormatPrice";
 import { useFilterContext } from "../hooks/customHook";
 
 export const FilterSection = () => {    
-    const { filter: { text, category, company, color, price, minPrice, maxPrice }, allProducts, handleFilterUpdate, handleClearFilters } = useFilterContext()
+    const { filter: { text, category, company, color, price, minPrice, maxPrice },
+     allProducts, handleFilterUpdate, handleClearFilters } = useFilterContext()
     const handleFormSubmit = (e) => {
         e.preventDefault(); // Prevent default page reload
         handleFilterUpdate(e);
